@@ -1,8 +1,10 @@
-angular.module('marketplaceApp').controller('marketplaceAppController', function() {
-
-  console.log("Angular working!");
+marketplaceApp.controller('marketplaceAppController', function($scope, $http) {
 
   var vm = this;
   vm.title = 'Marketplace';
+
+  $http.get('/api').success(function(data) {
+    $scope.inventoryData = data;
+  });
 
 });

@@ -1,1 +1,1 @@
-angular.module('marketplaceApp', []);
+var marketplaceApp = angular.module('marketplaceApp', []);
