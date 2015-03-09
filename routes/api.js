@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
+var database = require('../inventoryDatabase');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  var currentInventory = new database;
+  res.send(currentInventory.items);
 });
 
 module.exports = router;
