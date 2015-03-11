@@ -15,4 +15,8 @@ marketplaceApp.controller('marketplaceAppController', function($scope, $http) {
     $scope.updateTotal(item);
   };
 
+  $scope.updateTotal = function(item) {
+    $scope.total += item.cost;
+  };
+
 });
