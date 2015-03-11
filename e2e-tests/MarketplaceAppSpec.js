@@ -5,22 +5,27 @@ describe('Marketplace App', function() {
     itemList = element.all(by.css('.item-feature'));
   });
 
-  it('should have a title of Marketplace', function() {
+  xit('should have a title of Marketplace', function() {
     expect(browser.getTitle()).toEqual('Marketplace');
   });
 
-  it('should have a search form', function() {
+  xit('should have a search form', function() {
     expect(element(by.id('search-input-form')).isPresent()).toBe(true);
   });
 
-  it('should have a list of all 13 items for sale', function() {
+  xit('should have a list of all 13 items for sale', function() {
     expect(itemList.count()).toEqual(13);
   });
 
-  it('should allow user to add item to shopping cart', function() {
+  xit('should allow user to add item to shopping cart', function() {
     itemList.get(0).element(by.css('.buy-now-button')).click();
     var myCartItems = element.all(by.css('.cart-item'))
     expect(myCartItems.count()).toEqual(1);
+  });
+
+  it('should display a total cost of 0 upon loading', function() {
+    var total = $('#total-value').getText();
+    expect(total).toEqual('0');
   });
 
 });

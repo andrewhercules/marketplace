@@ -4,6 +4,7 @@ marketplaceApp.controller('marketplaceAppController', function($scope, $http) {
   vm.title = 'Marketplace';
 
   $scope.myCart = [];
+  $scope.total = 0;
 
   $http.get('/api').success(function(data) {
     $scope.inventoryData = data;
@@ -11,8 +12,7 @@ marketplaceApp.controller('marketplaceAppController', function($scope, $http) {
 
   $scope.addItemToCart = function(item) {
     $scope.myCart.push(item);
-    console.log('item added');
-    console.log($scope.myCart);
+    $scope.updateTotal(item);
   };
 
 });
