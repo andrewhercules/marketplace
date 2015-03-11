@@ -17,4 +17,10 @@ describe('Marketplace App', function() {
     expect(itemList.count()).toEqual(13);
   });
 
+  it('should allow user to add item to shopping cart', function() {
+    itemList.get(0).element(by.css('.buy-now-button')).click();
+    var myCartItems = element.all(by.css('.cart-item'))
+    expect(myCartItems.count()).toEqual(1);
+  });
+
 });
