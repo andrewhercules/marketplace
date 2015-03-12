@@ -3,6 +3,7 @@ describe('Marketplace App', function() {
   beforeEach(function() {
     browser.get('http://127.0.0.1:3000/');
     itemList = element.all(by.css('.item-feature'));
+    myCartItems = element.all(by.css('.cart-item'))
   });
 
   it('should have a title of Marketplace', function() {
@@ -19,7 +20,6 @@ describe('Marketplace App', function() {
 
   it('should allow user to add item to shopping cart', function() {
     itemList.get(0).element(by.css('.buy-now-button')).click();
-    var myCartItems = element.all(by.css('.cart-item'))
     expect(myCartItems.count()).toEqual(1);
   });
 
@@ -32,6 +32,12 @@ describe('Marketplace App', function() {
     itemList.get(0).element(by.css('.buy-now-button')).click();
     var total = $('#total-value').getText();
     expect(total).toEqual('99')
+  });
+
+  it('should allow user to remove item from their cart', function() {
+    itemList.get(0).element(by.css('.buy-now-button')).click();
+    myCartItems.get(0).element(by.css('.remove-item-button')).click();
+    expect(myCartItems.count()).toEqual(0);
   });
 
 });

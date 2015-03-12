@@ -12,11 +12,22 @@ marketplaceApp.controller('marketplaceAppController', function($scope, $http) {
 
   $scope.addItemToCart = function(item) {
     $scope.myCart.push(item);
-    $scope.updateTotal(item);
+    $scope.updateTotal('add', item);
   };
 
-  $scope.updateTotal = function(item) {
-    $scope.total += item.cost;
+  $scope.updateTotal = function(operation, item) {
+    if (operation == 'add') {
+      $scope.total += item.cost;
+    } else {
+      $scope.total -= item.cost;
+    };
+  };
+
+  $scope.removeItemFromCart = function(item) {
+    $scope.updateTotal('remove', item);
+    var i = $scope.myCart.indexOf(item);
+    $scope.myCart.splice(i, 1);
+
   };
 
 });
