@@ -36,7 +36,7 @@ marketplaceApp.controller('marketplaceAppController', function($scope, $http) {
       $scope.voucherInput = '';
     };
 
-    if(voucherCode == 'SAVE10') {
+    if(voucherCode == 'SAVE10' && $scope.total >= 50) {
       $scope.total -= 10;
       $scope.voucherInput = '';
     };

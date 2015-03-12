@@ -67,4 +67,12 @@ describe('Marketplace App', function() {
     expect(total).toEqual('89');
   });
 
+  it('should prevent user from using SAVE10 voucher if their total is not at least £50', function() {
+    itemList.get(1).element(by.css('.buy-now-button')).click();
+    element(by.id('voucher-input-form')).sendKeys('SAVE10');
+    element(by.id('apply-voucher-button')).click();
+    var total = $('#total-value').getText();
+    expect(total).toEqual('42');
+  });
+
 });
