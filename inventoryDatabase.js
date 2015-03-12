@@ -1,6 +1,6 @@
 inventoryDatabase = function() {
   this.items = [
-    { name: "Almond Toe Court Shoes", colour: "Patent Black", category: "Women’s Footwear", cost: 99.00, quantityInStock: 5},
+    { name: "Almond Toe Court Shoes", colour: "Patent Black", category: "Women's Footwear", cost: 99.00, quantityInStock: 5},
     { name: "Suede Shoes", colour: "Blue", category: "Women's Footwear", cost: 42.00, quantityInStock: 4 },
     { name: "Leather Driver Saddle Loafers", colour: "Tan", category: "Men's Footwear", cost: 34.00, quantityInStock: 12 },
     { name: "Flip Flops", colour: "Red", category: "Men's Footwear", cost: 19.00, quantityInStock: 6 },
