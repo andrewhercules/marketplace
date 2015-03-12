@@ -3,7 +3,8 @@ describe('Marketplace App', function() {
   beforeEach(function() {
     browser.get('http://127.0.0.1:3000/');
     itemList = element.all(by.css('.item-feature'));
-    myCartItems = element.all(by.css('.cart-item'))
+    myCartItems = element.all(by.css('.cart-item'));
+    filterOptionsList = element.all(by.tagName('option'));
   });
 
   xit('should have a title of Marketplace', function() {
@@ -141,8 +142,16 @@ describe('Marketplace App', function() {
     expect(itemList.get(0).element(by.css('.item-quantity')).getText()).toEqual('5');
   });
 
-  it('should have a filter drop down menu', function() {
-    expect(element(by.id('filter-selection-form')).isPresent()).toBe(true);
+  describe('filter drop down menu', function() {
+
+    it('should have a filter drop down menu', function() {
+      expect(element(by.id('filter-selection-form')).isPresent()).toBe(true);
+    });
+
+    it('should have seven filter options', function() {
+      expect(filterOptionsList.count()).toEqual(7);
+    });
+
   });
 
 

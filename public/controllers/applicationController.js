@@ -9,6 +9,54 @@ marketplaceApp.controller('marketplaceAppController', function($scope, $http) {
     $scope.inventoryData = data;
   });
 
+  $scope.filters = [
+    {
+      id: 1,
+      title: "All items for sale",
+      key: 'name',
+      reverse: false
+    },
+    {
+      id: 2,
+      title: "Women's Footwear",
+      key: 'category',
+      reverse: false
+    },
+    {
+      id: 3,
+      title: "Men's Footwear",
+      key: 'category',
+      reverse: false
+    },
+    {
+      id: 4,
+      title: "Women's Casualwear",
+      key: 'category',
+      reverse: false
+    },
+    {
+      id: 5,
+      title: "Men's Casualwear",
+      key: 'category',
+      reverse: false
+    },
+    {
+      id: 6,
+      title: "Women's Formalwear",
+      key: 'category',
+      reverse: false
+    },
+    {
+      id: 7,
+      title: "Men's Formalwear",
+      key: 'category',
+      reverse: false
+    }
+  ];
+
+  $scope.filter = $scope.filters[0];
+
+
   $scope.addItemToCart = function(item) {
     $scope.myCart.push(item);
     $scope.updateInventoryWhenItemAddedToCart(item);
