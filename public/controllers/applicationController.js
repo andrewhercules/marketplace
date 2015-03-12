@@ -41,11 +41,19 @@ marketplaceApp.controller('marketplaceAppController', function($scope, $http) {
       $scope.voucherInput = '';
     };
 
-    if(voucherCode == 'SAVE15' && $scope.total >= 75) {
+    if(voucherCode == 'SAVE15' && ($scope.total >= 75 && $scope.myCartContainsFootwear())) {
       $scope.total -= 15;
       $scope.voucherInput = '';
     };
 
   }
+
+  $scope.myCartContainsFootwear = function() {
+    for(var i = 0; i < $scope.myCart.length; i ++) {
+      var specificCategory = $scope.myCart[i].category
+      var genericCategory = specificCategory.split(' ')[1];
+      if(genericCategory == 'Footwear') return true;
+    };
+  };
 
 });

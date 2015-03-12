@@ -91,5 +91,12 @@ describe('Marketplace App', function() {
     expect(total).toEqual('42');
   });
 
+  it('should only allow user to save £15 if they use the SAVE15 voucher code and they have a footwear item in their cart', function() {
+    itemList.get(5).element(by.css('.buy-now-button')).click();
+    element(by.id('voucher-input-form')).sendKeys('SAVE15');
+    element(by.id('apply-voucher-button')).click();
+    var total = $('#total-value').getText();
+    expect(total).toEqual('167');
+  });
 
 });
