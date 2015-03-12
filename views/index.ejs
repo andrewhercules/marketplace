@@ -69,6 +69,7 @@
             <h5>{{item.name}}</h5>
             <p>{{item.category}}</p>
             <p>£ {{item.cost}}</p>
+            <p><span class='item-quantity'>{{item.quantityInStock}}</p> in stock</p>
             <button ng-if='item.quantityInStock > 0' class='btn btn-success buy-now-button' ng-click='addItemToCart(item)'>Buy now!</button>
             <button ng-if='item.quantityInStock == 0' class='btn btn-danger sold-out-button'>Sold out!</button>
           </div>

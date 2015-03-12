@@ -129,4 +129,9 @@ describe('Marketplace App', function() {
     expect(itemList.get(4).element(by.css('.sold-out-button')).isPresent()).toBe(true);
   });
 
+  it('should update number of items available if user adds item to cart', function() {
+    itemList.get(0).element(by.css('.buy-now-button')).click();
+    expect(itemList.get(0).element(by.css('.item-quantity')).getText()).toEqual('4');
+  });
+
 });

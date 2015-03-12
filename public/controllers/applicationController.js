@@ -28,6 +28,10 @@ marketplaceApp.controller('marketplaceAppController', function($scope, $http) {
     $scope.updateTotal('add', item);
   };
 
+  $scope.updateInventoryWhenItemAddedToCart = function(item) {
+    item.quantityInStock -= 1;
+  };
+
   $scope.updateTotal = function(operation, item) {
     if (operation == 'add') {
       $scope.total += item.cost;
