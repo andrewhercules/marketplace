@@ -41,11 +41,11 @@ marketplaceApp.controller('marketplaceAppController', function($scope, $http) {
       $scope.voucherInput = '';
     };
 
-    if(voucherCode == 'SAVE15') {
+    if(voucherCode == 'SAVE15' && $scope.total >= 75) {
       $scope.total -= 15;
       $scope.voucherInput = '';
     };
-    
+
   }
 
 });

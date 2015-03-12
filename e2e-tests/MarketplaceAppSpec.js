@@ -75,12 +75,21 @@ describe('Marketplace App', function() {
     expect(total).toEqual('42');
   });
 
-  it('should allow user to save £15 if they use the SAVE15 voucher code', function() {
+  xit('should allow user to save £15 if they use the SAVE15 voucher code', function() {
     itemList.get(0).element(by.css('.buy-now-button')).click();
     element(by.id('voucher-input-form')).sendKeys('SAVE15');
     element(by.id('apply-voucher-button')).click();
     var total = $('#total-value').getText();
     expect(total).toEqual('84');
   });
+
+  it('should only allow user to save £15 if they use the SAVE15 voucher code and their total is more than £75', function() {
+    itemList.get(1).element(by.css('.buy-now-button')).click();
+    element(by.id('voucher-input-form')).sendKeys('SAVE15');
+    element(by.id('apply-voucher-button')).click();
+    var total = $('#total-value').getText();
+    expect(total).toEqual('42');
+  });
+
 
 });
