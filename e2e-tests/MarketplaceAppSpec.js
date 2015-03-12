@@ -47,4 +47,8 @@ describe('Marketplace App', function() {
     expect(total).toEqual('0');
   });
 
+  it('should contain a form to add a voucher code', function() {
+    expect(element(by.id('voucher-input-form')).isPresent()).toBe(true);
+  });
+
 });
