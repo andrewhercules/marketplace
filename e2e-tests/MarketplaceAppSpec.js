@@ -40,4 +40,11 @@ describe('Marketplace App', function() {
     expect(myCartItems.count()).toEqual(0);
   });
 
+  it('should update total if user removes item from their cart', function() {
+    itemList.get(0).element(by.css('.buy-now-button')).click();
+    myCartItems.get(0).element(by.css('.remove-item-button')).click();
+    var total = $('#total-value').getText();
+    expect(total).toEqual('0');
+  });
+
 });
