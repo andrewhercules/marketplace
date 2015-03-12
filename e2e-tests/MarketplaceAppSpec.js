@@ -51,12 +51,20 @@ describe('Marketplace App', function() {
     expect(element(by.id('voucher-input-form')).isPresent()).toBe(true);
   });
 
-  it('should allow user to save £5 if they use the SAVE5 voucher code', function() {
+  xit('should allow user to save £5 if they use the SAVE5 voucher code', function() {
     itemList.get(0).element(by.css('.buy-now-button')).click();
     element(by.id('voucher-input-form')).sendKeys('SAVE5');
     element(by.id('apply-voucher-button')).click();
     var total = $('#total-value').getText();
     expect(total).toEqual('94');
+  });
+
+  it('should allow user to save £10 if they use the SAVE10 voucher code', function() {
+    itemList.get(0).element(by.css('.buy-now-button')).click();
+    element(by.id('voucher-input-form')).sendKeys('SAVE10');
+    element(by.id('apply-voucher-button')).click();
+    var total = $('#total-value').getText();
+    expect(total).toEqual('89');
   });
 
 });
