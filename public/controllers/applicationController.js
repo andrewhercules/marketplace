@@ -1,11 +1,9 @@
 marketplaceApp.controller('marketplaceAppController', function($scope, $http) {
 
-  var vm = this;
-  vm.title = 'Marketplace';
-
   $scope.voucherInput = '';
   $scope.myCart = [];
   $scope.total = 0;
+  $scope.voucherError = undefined;
 
   $http.get('/api').success(function(data) {
     $scope.inventoryData = data;
@@ -31,22 +29,38 @@ marketplaceApp.controller('marketplaceAppController', function($scope, $http) {
   };
 
   $scope.applyVoucherCode = function(voucherCode) {
-    if (voucherCode == 'SAVE5') {
-      $scope.total -= 5;
-      $scope.voucherInput = '';
-    };
 
-    if(voucherCode == 'SAVE10' && $scope.total >= 50) {
-      $scope.total -= 10;
-      $scope.voucherInput = '';
-    };
+    if($scope.isVoucherCodeValid(voucherCode)) {
 
-    if(voucherCode == 'SAVE15' && ($scope.total >= 75 && $scope.myCartContainsFootwear())) {
-      $scope.total -= 15;
-      $scope.voucherInput = '';
+      if (voucherCode == 'SAVE5') {
+        $scope.total -= 5;
+        $scope.voucherInput = '';
+      };
+
+      if(voucherCode == 'SAVE10' && $scope.total >= 50) {
+        $scope.total -= 10;
+        $scope.voucherInput = '';
+      };
+
+      if(voucherCode == 'SAVE15' && ($scope.total >= 75 && $scope.myCartContainsFootwear())) {
+        $scope.total -= 15;
+        $scope.voucherInput = '';
+      };
+
+    } else {
+
+      return 'invalid';
+
     };
 
   }
+
+  $scope.isVoucherCodeValid = function(voucherCode) {
+    var validVouchers = ['SAVE5', 'SAVE10', 'SAVE15'];
+    if(validVouchers.indexOf(voucherCode) >= 0) $scope.voucherError = false
+    else $scope.voucherError = true;
+  }
+
 
   $scope.myCartContainsFootwear = function() {
     for(var i = 0; i < $scope.myCart.length; i ++) {

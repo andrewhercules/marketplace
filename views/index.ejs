@@ -29,7 +29,7 @@
           <span class='icon-bar'></span>
           <span class='icon-bar'></span>
         </button>
-        <a class='navbar-brand' href='#'>{{application.title}}</a>
+        <a class='navbar-brand' href='#'>Marketplace</a>
       </div>
       <div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
         <ul class='nav navbar-nav'>
@@ -83,6 +83,11 @@
         <h5>Voucher Code: <input type='text' class='form-inline' ng-model='voucherInput' id='voucher-input-form'>
           <button class='btn btn-default' id='apply-voucher-button' ng-click='applyVoucherCode(voucherInput)'>apply voucher</button>
         </h5>
+
+        <div class='voucher-message voucher-code-error' ng-if='voucherError == true'>
+          <p>Uh oh! Your code is invalid! Please try again!</p>
+        </div>
+
       </div>
     </div>
 

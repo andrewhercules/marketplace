@@ -99,4 +99,13 @@ describe('Marketplace App', function() {
     expect(total).toEqual('167');
   });
 
+  it('should show an error message if a user inputs the wrong voucher code', function() {
+    itemList.get(0).element(by.css('.buy-now-button')).click();
+    element(by.id('voucher-input-form')).sendKeys('RANDOMCODE');
+    element(by.id('apply-voucher-button')).click();
+    var total = $('#total-value').getText();
+    expect(total).toEqual('99');
+    expect(element(by.css('.voucher-code-error')).isPresent()).toBe(true);
+  });
+
 });
