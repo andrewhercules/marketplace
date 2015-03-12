@@ -32,6 +32,10 @@ marketplaceApp.controller('marketplaceAppController', function($scope, $http) {
     item.quantityInStock -= 1;
   };
 
+  $scope.updateInventoryWhenItemDeletedFromCart = function(item) {
+    item.quantityInStock += 1;
+  };
+
   $scope.updateTotal = function(operation, item) {
     if (operation == 'add') {
       $scope.total += item.cost;
@@ -43,8 +47,8 @@ marketplaceApp.controller('marketplaceAppController', function($scope, $http) {
 
   $scope.removeItemFromCart = function(item) {
     $scope.updateTotal('remove', item);
-    var i = $scope.myCart.indexOf(item);
-    $scope.myCart.splice(i, 1);
+    $scope.myCart.splice($scope.myCart.indexOf(item), 1);
+    $scope.updateInventoryWhenItemDeletedFromCart(item);
   };
 
   $scope.applyVoucherCode = function(voucherCode) {

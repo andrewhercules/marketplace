@@ -124,14 +124,22 @@ describe('Marketplace App', function() {
     expect(totalAfterItemRemoved).toEqual('0');
   });
 
-  it('should not allow user to add sold out items to their cart', function() {
+  xit('should not allow user to add sold out items to their cart', function() {
     expect(itemList.get(4).element(by.css('.buy-now-button')).isPresent()).toBe(false);
     expect(itemList.get(4).element(by.css('.sold-out-button')).isPresent()).toBe(true);
   });
 
-  it('should update number of items available if user adds item to cart', function() {
+  xit('should update number of items available if user adds item to cart', function() {
     itemList.get(0).element(by.css('.buy-now-button')).click();
     expect(itemList.get(0).element(by.css('.item-quantity')).getText()).toEqual('4');
   });
+
+  it('should update number of items available if user adds and then removes an item from their cart', function() {
+    itemList.get(0).element(by.css('.buy-now-button')).click();
+    expect(itemList.get(0).element(by.css('.item-quantity')).getText()).toEqual('4');
+    myCartItems.get(0).element(by.css('.remove-item-button')).click();
+    expect(itemList.get(0).element(by.css('.item-quantity')).getText()).toEqual('5');
+  });
+
 
 });
