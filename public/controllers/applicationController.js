@@ -19,6 +19,7 @@ marketplaceApp.controller('marketplaceAppController', function($scope, $http) {
       $scope.total += item.cost;
     } else {
       $scope.total -= item.cost;
+      if($scope.total < 0) $scope.total = 0;
     };
   };
 
@@ -30,9 +31,11 @@ marketplaceApp.controller('marketplaceAppController', function($scope, $http) {
 
   $scope.applyVoucherCode = function(voucherCode) {
 
-    if($scope.isVoucherCodeValid(voucherCode)) {
+    $scope.isVoucherCodeValid(voucherCode)
 
-      if (voucherCode == 'SAVE5') {
+    if($scope.voucherError == false) {
+
+      if(voucherCode == 'SAVE5') {
         $scope.total -= 5;
         $scope.voucherInput = '';
       };
