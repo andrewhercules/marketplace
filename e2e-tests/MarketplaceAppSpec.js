@@ -113,7 +113,7 @@ describe('Marketplace App', function() {
     expect(element(by.css('.voucher-code-success')).isPresent()).toBe(true);
   });
 
-  it('should reset total to zero if user removes all item(s) from cart after applying a voucher code', function() {
+  xit('should reset total to zero if user removes all item(s) from cart after applying a voucher code', function() {
     itemList.get(0).element(by.css('.buy-now-button')).click();
     element(by.id('voucher-input-form')).sendKeys('SAVE5');
     element(by.id('apply-voucher-button')).click();
@@ -122,6 +122,11 @@ describe('Marketplace App', function() {
     myCartItems.get(0).element(by.css('.remove-item-button')).click();
     var totalAfterItemRemoved = $('#total-value').getText();
     expect(totalAfterItemRemoved).toEqual('0');
+  });
+
+  it('should not allow user to add sold out items to their cart', function() {
+    expect(itemList.get(4).element(by.css('.buy-now-button')).isPresent()).toBe(false);
+    expect(itemList.get(4).element(by.css('.sold-out-button')).isPresent()).toBe(true);
   });
 
 });
