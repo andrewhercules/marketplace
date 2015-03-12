@@ -40,6 +40,12 @@ marketplaceApp.controller('marketplaceAppController', function($scope, $http) {
       $scope.total -= 10;
       $scope.voucherInput = '';
     };
+
+    if(voucherCode == 'SAVE15') {
+      $scope.total -= 15;
+      $scope.voucherInput = '';
+    };
+    
   }
 
 });
