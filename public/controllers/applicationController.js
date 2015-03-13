@@ -24,7 +24,7 @@ marketplaceApp.controller('marketplaceAppController', function($scope, $http) {
     { category: "Men's Casualwear" },
     { category: "Women's Formalwear" },
     { category: "Men's Formalwear" }
-  ]
+  ];
 
   $scope.addItemToCart = function(item) {
     $scope.myCart.push(item);

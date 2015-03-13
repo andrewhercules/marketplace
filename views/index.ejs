@@ -45,7 +45,7 @@
   <main class='container'>
 
     <div class='row'>
-      <div class='col-lg-4'>
+      <!-- <div class='col-lg-4'>
         <h2>Search ... </h2>
         <div class='input-group'>
           <span class='input-group-addon'>
@@ -53,12 +53,12 @@
           </span>
           <input type='text' class='form-control' ng-model='searchInput' id='search-input-form'>
         </div>
-      </div>
-      <div class='col-lg-4'>
+      </div> -->
+      <div class='col-lg-6'>
         <h2>Shop ...</h2>
         <select class='form-control pull-right' id='filter-dropdown-menu' ng-model='filter' ng-options='filter as filter.category for filter in filterOptions'></select>
       </div>
-      <div class='col-lg-4'>
+      <div class='col-lg-6'>
         <h2>Sort By ...</h2>
         <select class='form-control pull-right' id='sort-by-dropdown-menu' ng-model='sortBy' ng-options='sortBy as sortBy.title for sortBy in sortByOptions'></select>
       </div>
@@ -67,6 +67,7 @@
     <br />
     <hr id='items-for-sale' />
     <br />
+
 
     <div class='row text-center'>
       <div class='col-md-4 col-sm-3 item-feature' id='all-items' ng-repeat='item in inventoryData | filter: filter : true | orderBy:sortBy.key:sortBy.reverse'  >

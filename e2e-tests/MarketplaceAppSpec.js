@@ -5,6 +5,7 @@ describe('Marketplace App', function() {
     itemList = element.all(by.css('.item-feature'));
     myCartItems = element.all(by.css('.cart-item'));
     sortByOptionsList = element(by.id('sort-by-dropdown-menu')).all(by.tagName('option'));
+    filterOptionsList = element(by.id('filter-dropdown-menu')).all(by.tagName('option'));
   });
 
   xit('should have a title of Marketplace', function() {
@@ -142,7 +143,7 @@ describe('Marketplace App', function() {
     expect(itemList.get(0).element(by.css('.item-quantity')).getText()).toEqual('5');
   });
 
-  describe('sort by drop down menu', function() {
+  xdescribe('sort by drop down menu', function() {
 
     it('should have a sort by drop down menu', function() {
       expect(element(by.id('sort-by-dropdown-menu')).isPresent()).toBe(true);
@@ -169,6 +170,50 @@ describe('Marketplace App', function() {
       expect(itemList.get(0).element(by.css('.item-name')).getText()).toEqual('Mid Twist Cut-Out Dress');
       expect(itemList.get(12).element(by.css('.item-name')).getText()).toEqual('Flip Flops');
     });
+
+  });
+
+  describe('filter drop down menu', function() {
+
+    it('should have a filter drop down menu', function() {
+      expect(element(by.id('filter-dropdown-menu')).isPresent()).toBe(true);
+    });
+
+    it('should have seven filter options with the first one blank by default', function() {
+      expect(filterOptionsList.count()).toEqual(7);
+    });
+
+    it("should allow user to only see items in the Women's Footwear category", function() {
+      element(by.cssContainingText('option', "Women's Footwear")).click();
+      expect(itemList.count()).toEqual(2);
+    });
+
+    it("should allow user to only see items in the Men's Footwear category", function() {
+      element(by.cssContainingText('option', "Men's Footwear")).click();
+      expect(itemList.count()).toEqual(3);
+    });
+
+    it("should allow user to only see items in the Women's Footwear category", function() {
+      element(by.cssContainingText('option', "Women's Casualwear")).click();
+      expect(itemList.count()).toEqual(2);
+    });
+
+    it("should allow user to only see items in the Women's Footwear category", function() {
+      element(by.cssContainingText('option', "Men's Casualwear")).click();
+      expect(itemList.count()).toEqual(2);
+    });
+
+    it("should allow user to only see items in the Women's Footwear category", function() {
+      element(by.cssContainingText('option', "Women's Formalwear")).click();
+      expect(itemList.count()).toEqual(2);
+    });
+
+    it("should allow user to only see items in the Women's Footwear category", function() {
+      element(by.cssContainingText('option', "Men's Formalwear")).click();
+      expect(itemList.count()).toEqual(2);
+    });
+
+
 
   });
 
