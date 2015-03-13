@@ -21,6 +21,7 @@
 <body ng-app='marketplaceApp' ng-controller='marketplaceAppController as application'>
 
   <nav class='navbar navbar-inverse navbar-fixed-top' role='navigation'>
+
     <div class='container'>
       <div class='navbar-header'>
         <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='#bs-example-navbar-collapse-1'>
@@ -29,7 +30,7 @@
           <span class='icon-bar'></span>
           <span class='icon-bar'></span>
         </button>
-        <a class='navbar-brand' href='#'>Marketplace</a>
+        <a class='navbar-brand' href='/'>Marketplace</a>
       </div>
       <div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
         <ul class='nav navbar-nav'>
@@ -38,33 +39,37 @@
         </ul>
       </div>
     </div>
+
   </nav>
 
-  <div class='container'>
+  <main class='container'>
 
     <div class='row'>
-      <div class='col-lg-12'>
-        <h2>Search</h2>
+      <div class='col-lg-4'>
+        <h2>Search ... </h2>
         <div class='input-group'>
           <span class='input-group-addon'>
             <span class='glyphicon glyphicon-search'></span>
           </span>
           <input type='text' class='form-control' ng-model='searchInput' id='search-input-form'>
         </div>
-        <br />
-        <h2>Filter</h2>
-        <select class='form-control pull-right' id='filter-selection-form' ng-model='filter' ng-options='filter as filter.title for filter in filters'></select>
-        </div>
-    </div>
-
-    <div class='row'>
-      <div class='col-lg-12'>
-        <h2 id='items-for-sale'>Items For Sale</h2>
+      </div>
+      <div class='col-lg-4'>
+        <h2>Shop ...</h2>
+        <select class='form-control pull-right' id='filter-dropdown-menu' ng-model='filter' ng-options='filter as filter.category for filter in filterOptions'></select>
+      </div>
+      <div class='col-lg-4'>
+        <h2>Sort By ...</h2>
+        <select class='form-control pull-right' id='sort-by-dropdown-menu' ng-model='sortBy' ng-options='sortBy as sortBy.title for sortBy in sortByOptions'></select>
       </div>
     </div>
 
+    <br />
+    <hr id='items-for-sale' />
+    <br />
+
     <div class='row text-center'>
-      <div class='col-md-4 col-sm-3 item-feature' id='all-items' ng-repeat='item in inventoryData | filter:searchInput | orderBy:filter.key:filter.reverse'  >
+      <div class='col-md-4 col-sm-3 item-feature' id='all-items' ng-repeat='item in inventoryData | filter: filter : true | orderBy:sortBy.key:sortBy.reverse'  >
         <div class='thumbnail'>
           <img src='http://placehold.it/800x500' alt='Placeholder image'>
           <div class='caption'>
@@ -112,7 +117,7 @@
       </div>
     </div>
 
-  </div>
+  </main>
 
   <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js'></script>
   <script type='text/javascript' src='/angularApplication.js'></script>

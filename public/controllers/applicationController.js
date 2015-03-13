@@ -9,53 +9,37 @@ marketplaceApp.controller('marketplaceAppController', function($scope, $http) {
     $scope.inventoryData = data;
   });
 
-  $scope.filters = [
+  $scope.sortByOptions = [
     {
       id: 1,
-      title: "All items for sale",
+      title: "Alphabetical order",
       key: 'name',
       reverse: false
     },
     {
       id: 2,
-      title: "Women's Footwear",
-      key: 'category',
+      title: "Price: Lowest to Highest",
+      key: 'cost',
       reverse: false
     },
     {
       id: 3,
-      title: "Men's Footwear",
+      title: "Price: Highest to Lowest",
       key: 'category',
-      reverse: false
-    },
-    {
-      id: 4,
-      title: "Women's Casualwear",
-      key: 'category',
-      reverse: false
-    },
-    {
-      id: 5,
-      title: "Men's Casualwear",
-      key: 'category',
-      reverse: false
-    },
-    {
-      id: 6,
-      title: "Women's Formalwear",
-      key: 'category',
-      reverse: false
-    },
-    {
-      id: 7,
-      title: "Men's Formalwear",
-      key: 'category',
-      reverse: false
+      reverse: true
     }
   ];
 
-  $scope.filter = $scope.filters[0];
+  $scope.sortBy = $scope.sortByOptions[0];
 
+  $scope.filterOptions = [
+    { category: "Women's Footwear" },
+    { category: "Men's Footwear"},
+    { category: "Women's Casualwear" },
+    { category: "Men's Casualwear" },
+    { category: "Women's Formalwear" },
+    { category: "Men's Formalwear" }
+  ]
 
   $scope.addItemToCart = function(item) {
     $scope.myCart.push(item);
