@@ -1,7 +1,7 @@
 exports.config = {
 
   specs: [
-    'e2e-tests/MarketplaceAppSpec.js'
+    'e2e-tests/*.js'
   ],
 
   capabilities: {
