@@ -10,24 +10,9 @@ marketplaceApp.controller('marketplaceAppController', function($scope, $http) {
   });
 
   $scope.sortByOptions = [
-    {
-      id: 1,
-      title: "Alphabetical order",
-      key: 'name',
-      reverse: false
-    },
-    {
-      id: 2,
-      title: "Price: Lowest to Highest",
-      key: 'cost',
-      reverse: false
-    },
-    {
-      id: 3,
-      title: "Price: Highest to Lowest",
-      key: 'category',
-      reverse: true
-    }
+    { id: 1, title: 'Alphabetical Order', key: 'name', reverse: false },
+    { id: 2, title: 'Price: Lowest to Highest', key: 'cost', reverse: false },
+    { id: 3, title: 'Price: Highest to Lowest', key: 'cost', reverse: true }
   ];
 
   $scope.sortBy = $scope.sortByOptions[0];
