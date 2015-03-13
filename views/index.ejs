@@ -22,8 +22,8 @@
 
   <nav class='navbar navbar-inverse navbar-fixed-top' role='navigation'>
 
-    <div class='container'>
-      <div class='navbar-header'>
+    <section class='container'>
+      <section class='navbar-header'>
         <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='#bs-example-navbar-collapse-1'>
           <span class='sr-only'>Toggle navigation</span>
           <span class='icon-bar'></span>
@@ -31,92 +31,85 @@
           <span class='icon-bar'></span>
         </button>
         <a class='navbar-brand' href='/'>Marketplace</a>
-      </div>
-      <div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
+      </section>
+      <section class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
         <ul class='nav navbar-nav'>
           <li><a href='#items-for-sale'>Items For Sale</a></li>
           <li><a href='#my-cart'>My Shopping Cart</a></li>
         </ul>
-      </div>
-    </div>
+      </section>
+    </section>
 
   </nav>
 
   <main class='container'>
 
-    <div class='row'>
-      <!-- <div class='col-lg-4'>
-        <h2>Search ... </h2>
-        <div class='input-group'>
-          <span class='input-group-addon'>
-            <span class='glyphicon glyphicon-search'></span>
-          </span>
-          <input type='text' class='form-control' ng-model='searchInput' id='search-input-form'>
-        </div>
-      </div> -->
-      <div class='col-lg-6'>
-        <h2>Shop ...</h2>
+    <section class='row'>
+      <section class='col-lg-6'>
+        <h2>Filter ...</h2>
         <select class='form-control pull-right' id='filter-dropdown-menu' ng-model='filter' ng-options='filter as filter.category for filter in filterOptions'></select>
-      </div>
-      <div class='col-lg-6'>
+      </section>
+      <section class='col-lg-6'>
         <h2>Sort By ...</h2>
         <select class='form-control pull-right' id='sort-by-dropdown-menu' ng-model='sortBy' ng-options='sortBy as sortBy.title for sortBy in sortByOptions'></select>
-      </div>
-    </div>
+      </section>
+    </section>
 
     <br />
     <hr id='items-for-sale' />
     <br />
 
-
-    <div class='row text-center'>
-      <div class='col-md-4 col-sm-3 item-feature' id='all-items' ng-repeat='item in inventoryData | filter: filter : true | orderBy:sortBy.key:sortBy.reverse'  >
-        <div class='thumbnail'>
+    <section class='row text-center'>
+      <section class='col-md-4 col-sm-3 item-feature' id='all-items' ng-repeat='item in inventoryData | filter: filter : true | orderBy:sortBy.key:sortBy.reverse'  >
+        <section class='thumbnail'>
           <img src='http://placehold.it/800x500' alt='Placeholder image'>
-          <div class='caption'>
+          <section class='caption'>
             <h5 class='item-name'>{{item.name}}</h5>
             <p>{{item.category}}</p>
             <p>£ {{item.cost}}</p>
             <p><span class='item-quantity'>{{item.quantityInStock}}</p> in stock</p>
             <button ng-if='item.quantityInStock > 0' class='btn btn-success buy-now-button' ng-click='addItemToCart(item)'>Buy now!</button>
             <button ng-if='item.quantityInStock == 0' class='btn btn-danger sold-out-button'>Sold out!</button>
-          </div>
-        </div>
-      </div>
-    </div>
+          </section>
+        </section>
+      </section>
+    </section>
 
-    <div class='row'>
-          <div class='col-lg-12'>
-            <h2 id='my-cart'>My Shopping Cart</h2>
-            <h4 id='total'>Total:<span id='total-value'>{{total}}</span></h4>
-            <h5>Voucher Code: <input type='text' class='form-inline' ng-model='voucherInput' id='voucher-input-form'>
-              <button class='btn btn-default' id='apply-voucher-button' ng-click='applyVoucherCode(voucherInput)'>apply voucher</button>
-            </h5>
+    <br />
+    <hr id='my-cart' />
+    <br />
 
-            <div class='voucher-message voucher-code-error' ng-if='voucherError == true'>
-              <p>Uh oh! Your code is invalid! Please try again!</p>
-            </div>
+    <section class='row'>
+      <section class='col-md-6'>
+        <h2>My Shopping Cart</h2>
+        <h3 id='shopping-cart-total'>Total: £<span id='shopping-cart-total-amount'>{{total}}</span></h3>
+      </section>
+      <section class='col-md-6'>
+        <h4>Voucher Code: <input type='text' class='form-control' ng-model='voucherInput' id='voucher-code-input-form'><h5>
+        <button class='btn btn-default' id='apply-voucher-button' ng-click='applyVoucherCode(voucherInput)'>Apply Voucher</button>
+        <button class='btn btn-success'>Proceed to Checkout</button>
+        <section class='voucher-message voucher-code-error' ng-if='voucherError == true'>
+          <p class='voucher-message-error'>Uh oh! Your code is invalid! Please try again!</p>
+        </section>
+        <section class='voucher-message voucher-code-success' ng-if='voucherError == false'>
+          <p class='voucher-message-success'>You're code is valid! You're saving money!</p>
+        </section>
+      </section>
+    </section>
 
-            <div class='voucher-message voucher-code-success' ng-if='voucherError == false'>
-              <p>Yay! You're code is valid! You're saving money!</p>
-            </div>
-
-          </div>
-        </div>
-
-    <div class='row text-center'>
-      <div class='col-md-2 col-sm-6 item-feature cart-item' ng-repeat='item in myCart track by $index' >
-        <div class='thumbnail'>
+    <section class='row text-center'>
+      <section class='col-md-2 col-sm-6 item-feature cart-item' ng-repeat='item in myCart track by $index' >
+        <section class='thumbnail'>
           <img src='http://placehold.it/800x500' alt='Placeholder image'>
-          <div class='caption'>
+          <section class='caption'>
             <h4>{{item.name}}</h4>
             <p>{{item.category}}</p>
             <p>£ {{item.cost}}</p>
             <button class='btn btn-default remove-item-button' ng-click='removeItemFromCart(item)'>Remove item</button>
-          </div>
-        </div>
-      </div>
-    </div>
+          </section>
+        </section>
+      </section>
+    </section>
 
   </main>
 

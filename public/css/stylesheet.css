@@ -2,14 +2,14 @@ body {
     padding-top: 70px;
 }
 
-.hero-spacer {
-    margin-top: 50px;
-}
-
 .item-feature {
     margin-bottom: 30px;
 }
 
-footer {
-    margin: 50px 0;
+p.voucher-message-error {
+  color: red;
+}
+
+p.voucher-message-success {
+  color: green;
 }
