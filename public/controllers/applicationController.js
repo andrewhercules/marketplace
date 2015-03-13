@@ -28,74 +28,61 @@ marketplaceApp.controller('marketplaceAppController', function($scope, $http) {
 
   $scope.addItemToCart = function(item) {
     $scope.myCart.push(item);
-    $scope.updateInventoryWhenItemAddedToCart(item);
-    $scope.updateTotal('add', item);
-  };
-
-  $scope.updateInventoryWhenItemAddedToCart = function(item) {
-    item.quantityInStock -= 1;
-  };
-
-  $scope.updateInventoryWhenItemDeletedFromCart = function(item) {
-    item.quantityInStock += 1;
-  };
-
-  $scope.updateTotal = function(operation, item) {
-    if (operation == 'add') {
-      $scope.total += item.cost;
-    } else {
-      $scope.total -= item.cost;
-      if($scope.total < 0) $scope.total = 0;
-    };
+    $scope.updateInventory('sale', item);
+    $scope.updateTotal('added-to-cart', item);
   };
 
   $scope.removeItemFromCart = function(item) {
-    $scope.updateTotal('remove', item);
+    $scope.updateTotal('removed-from-cart', item);
     $scope.myCart.splice($scope.myCart.indexOf(item), 1);
-    $scope.updateInventoryWhenItemDeletedFromCart(item);
+    $scope.updateInventory('restock', item);
+  };
+
+  $scope.updateInventory = function(operation, item) {
+    if (operation == 'sale') item.quantityInStock -= 1;
+    if (operation == 'restock') item.quantityInStock += 1;
+  };
+
+  $scope.updateTotal = function(operation, item) {
+    if (operation == 'added-to-cart') $scope.total += item.cost;
+    if (operation == 'removed-from-cart') $scope.total -= item.cost;
+    if ($scope.total < 0) $scope.total = 0;
   };
 
   $scope.applyVoucherCode = function(voucherCode) {
-
     $scope.isVoucherCodeValid(voucherCode)
-
-    if($scope.voucherError == false) {
-
-      if(voucherCode == 'SAVE5') {
+    if ($scope.voucherError == false) {
+      if (voucherCode == 'SAVE5') {
         $scope.total -= 5;
-        $scope.voucherInput = '';
       };
-
-      if(voucherCode == 'SAVE10' && $scope.total >= 50) {
+      if (voucherCode == 'SAVE10' && $scope.total >= 50) {
         $scope.total -= 10;
-        $scope.voucherInput = '';
       };
-
-      if(voucherCode == 'SAVE15' && ($scope.total >= 75 && $scope.myCartContainsFootwear())) {
+      if (voucherCode == 'SAVE15' && $scope.isEligibleForSAVE15Voucher()) {
         $scope.total -= 15;
-        $scope.voucherInput = '';
       };
-
-    } else {
-
-      return 'invalid';
-
+      $scope.voucherInput = '';
     };
-
-  }
+  };
 
   $scope.isVoucherCodeValid = function(voucherCode) {
     var validVouchers = ['SAVE5', 'SAVE10', 'SAVE15'];
-    if(validVouchers.indexOf(voucherCode) >= 0) $scope.voucherError = false
-    else $scope.voucherError = true;
-  }
+    if (validVouchers.indexOf(voucherCode) >= 0) {
+      $scope.voucherError = false;
+    } else {
+      $scope.voucherError = true;
+    };
+  };
 
+  $scope.isEligibleForSAVE15Voucher = function() {
+    return $scope.total >= 75 && $scope.myCartContainsFootwear();
+  };
 
   $scope.myCartContainsFootwear = function() {
-    for(var i = 0; i < $scope.myCart.length; i ++) {
+    for (var i = 0; i < $scope.myCart.length; i ++) {
       var specificCategory = $scope.myCart[i].category
       var genericCategory = specificCategory.split(' ')[1];
-      if(genericCategory == 'Footwear') return true;
+      if (genericCategory == 'Footwear') return true;
     };
   };
 
