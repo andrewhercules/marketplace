@@ -10,9 +10,9 @@ inventoryDatabase = function() {
     { name: "Fine Stripe Short Sleeve Shirt", colour: "Grey", category: "Men's Casualwear", cost: 49.99, quantityInStock: 9 },
     { name: "Fine Stripe Short Sleeve Shirt", colour: "Green", category: "Men's Casualwear", cost: 39.99, quantityInStock: 3 },
     { name: "Sharkskin Waistcoat", colour: "Charcoal", category: "Men's Formalwear", cost: 75.00, quantityInStock: 2 },
-    { name: "Lightweight Patch Pocket Blazer", colour: "Deer", category: "Men's Formalwear", cost: parseFloat(175.50).toFixed(2), quantityInStock: 1 },
-    { name: "￼Bird Print Dress", colour: "Black", category: "Women's Formalwear", cost: 270.00, quantityInStock: 10 },
-    { name: "￼Mid Twist Cut-Out Dress", colour: "Pink", category: "Women's Formalwear", cost: 540.00, quantityInStock: 5 }
+    { name: "Bird Print Dress", colour: "Black", category: "Women's Formalwear", cost: 270.00, quantityInStock: 10 },
+    { name: "Mid Twist Cut-Out Dress", colour: "Pink", category: "Women's Formalwear", cost: 540.00, quantityInStock: 5 },
+    { name: "Lightweight Patch Pocket Blazer", colour: "Deer", category: "Men's Formalwear", cost: parseFloat(175.50).toFixed(2), quantityInStock: 1 }
   ];
 };
 
