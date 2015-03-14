@@ -2,7 +2,7 @@
 
 ### Introduction
 
-Marketplace is a simple e-commerce website built as part of a technical test for one the UK's leading digital agencies. It's a basic AngularJS app running on a Node.js server and the Express.js framework. The front-end and user interface is basic and uses Bootstrap elements and a modified template found at [StartBootstrap.com](http://startbootstrap.com/).
+Marketplace is a simple, single-page, mock e-commerce website built as part of a technical test for one the UK's leading digital agencies. It's a basic AngularJS app running on a Node.js server and the Express.js framework. The front-end and user interface is basic and uses Bootstrap elements and a modified template found at [StartBootstrap.com](http://startbootstrap.com/).
 
 ### Languages/Platforms/Tools
 
@@ -20,6 +20,7 @@ Having used AngularJS with Ruby and a Sinatra server, I want to build a simple A
 
 - [x] Create a basic version of the app
 - [ ] Investigate ngMessages to show error messages
+- [ ] Change $http GET request and use ngResources
 - [ ] Limit users to using only one voucher code
 - [ ] Explore creating a /mycart route
 - [ ] Refactor code further (e.g. consider using multiple controllers)
@@ -50,10 +51,10 @@ $ open http://localhost:3000
 
 ####Running the Unit and End-to-End Tests
 
-For unit tests, I used Karma and Jasmine to conduct a simple test of Angular's $http GET service request and to mock the response data received from the GET request. For end-to-end tests, I used Protractor and Jasmine to conduct feature tests and overall usability tests.
+For unit tests, I used Karma and Jasmine to conduct a simple test of Angular's $http GET service request, to mock the response data received from the GET request, and to test the individual data objects contained within the response data array. For end-to-end tests, I used Protractor and Jasmine to conduct feature tests and overall usability tests.
 
 Prior to running the tests, please ensure that you [install Node.js](http://nodejs.org/), [update NPM](https://docs.npmjs.com/getting-started/installing-node), and install both [Protractor](http://angular.github.io/protractor/#/tutorial) and [Karma](http://karma-runner.github.io/0.12/intro/installation.html) along with the relevant plugins/dependencies listed with their respective installation instructions.
 
 To run the unit tests, use the ``$ karma start`` command.
 
-To run the end-to-end tests, first start the server using ``$ npm start`` and then run ``$ protractor``. Please note that the tests will take approximately 30-45 seconds.
+To run the end-to-end tests, first start the server using ``$ npm start`` and then, in a new terminal window, run ``$ protractor``. Please note that the tests will take approximately 30 seconds to complete.
